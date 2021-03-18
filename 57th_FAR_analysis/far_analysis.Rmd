@@ -1,0 +1,57 @@
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(sf)
+install.packages("mapview")
+library(mapview)
+library(stringr)
+```
+
+## Importing the data
+```{r}
+all_lots <- read_sf("~/Desktop/Github/57th_FAR/raw_data/57th_street_lots.geojson")%>%
+ # select(!("cb2010", "cd", "ownertype", "landmark")) %>%
+  st_transform(4326) %>% 
+  st_as_sf()
+
+
+
+real_prop <- read_csv("~/Desktop/Github/57th_FAR/raw_data/real_property.csv") %>%
+  filter(BLOCK > 900 & BLOCK < 1300 & AIR_RIGHTS == "Y")
+# real_prop <- real_prop %>%
+#   as.character(real_prop$LOT) %>%
+#   rbind(str_pad(LOT, width = 4, side = c("Left"), pad = "0"))
+
+  
+glimpse(real_prop)
+```
+
+## Including Plots
+```{r}
+all_lots <- all_lots %>%
+  mutate(maxfar = max(CommFAR, ResidFAR, FacilFAR),
+         greaterfar = case_when(BuiltFAR > maxfar ~ 1,
+                                BuiltFAR <= maxfar ~ 0),
+         BLOCK = Block,
+         LOT = Lot)
+
+only_skyscrapers <-all_lots %>%
+  filter(greaterfar == 1) 
+mapview(only_skyscrapers)
+```
+```{r}
+air_right_ <- real_prop %>%
+  select(BLOCK, LOT) %>%
+  group_by(BLOCK, LOT) %>%
+  summarize(air_right_transf = n()) %>%
+  ungroup()%>%
+  right_join(all_lots, by = c("BLOCK", "LOT"))%>%
+  filter(air_right_transf != 'NA')%>%
+  st_as_sf()
+
+mapview(air_right_)
+```
+```{r}
+skyscraperbbl <- c()
+```
+
