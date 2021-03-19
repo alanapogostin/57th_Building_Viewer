@@ -52,6 +52,25 @@ air_right_ <- real_prop %>%
 mapview(air_right_)
 ```
 ```{r}
-skyscraperbbl <- c()
+skyscraper_points <- read_sf("~/Desktop/Github/57th_FAR/raw_data/landmark_points.json")
+  
+```
+
+
+```{r}
+skyscraperbbl <- c( 1013307502, #252e57th
+                    1011057501, # VIA57West
+                    1010090029, #Senville Buildings Corporation
+                    1011057501, #big tetrahedron building
+                    1012730022, #Solow Building Corporation
+                    1012720001, #Hemesphere House
+                    1010107506, #One57
+                    1010290027, #Osborne Apartment House
+                    1011050029 #Helena 57 West
+                    )
+skyscraper_lots <- all_lots %>%
+  filter(BBL %in% skyscraperbbl)%>%
+  st_as_sf()
+mapview(skyscraper_lots)
 ```
 

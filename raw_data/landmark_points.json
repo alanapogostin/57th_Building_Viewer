@@ -1,0 +1,131 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.9924146,
+          40.7710968,
+          0
+        ]
+      },
+      "properties": {
+        "name": "VIA 57 West"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.9658765,
+          40.7590821,
+          0
+        ]
+      },
+      "properties": {
+        "name": "252 East 57th"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.9776198,
+          40.7641922,
+          0
+        ]
+      },
+      "properties": {
+        "name": "Senville Buildings Corporation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.9931954,
+          40.771748,
+          0
+        ]
+      },
+      "properties": {
+        "name": "BIG Tetrahedron Building"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.9746755,
+          40.763953,
+          0
+        ]
+      },
+      "properties": {
+        "name": "Solow Building Corporation"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.9770219,
+          40.7640334,
+          0
+        ]
+      },
+      "properties": {
+        "name": "Hemisphere House"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.9791466,
+          40.7653879,
+          0
+        ]
+      },
+      "properties": {
+        "name": "One57"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.9803735,
+          40.7658454,
+          0
+        ]
+      },
+      "properties": {
+        "name": "Osborne Apartment House"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.991697,
+          40.7708419,
+          0
+        ]
+      },
+      "properties": {
+        "name": "Helena 57 West"
+      }
+    }
+  ]
+}
