@@ -76,7 +76,7 @@ skyscraper_lots <- all_lots %>%
   filter(BBL %in% skyscraperbbl)%>%
   st_as_sf()
 
-mapview(all_lots)
+mapview(skyscraper_lots)
 ```
 # Writing geojson files
 ```{r}

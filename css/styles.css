@@ -1,0 +1,37 @@
+#sidebar-left {
+  background: grey;
+  width: 20%;
+  height: 100%;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  outline-width: medium;
+  outline-color: black;
+}
+#sidebar-right {
+  background: grey;
+  width: 20%;
+  height: 100%;
+  right: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  outline-width: medium;
+  outline-color: black;
+}
+.map-overlay {
+  background-color: grey;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.8);
+  font-family: Arial, sans-serif;
+  overflow: auto;
+  border-radius: 3px;
+}
+.mapContainer{
+  background-color: grey;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+.container {
+  display: flex;
+}
