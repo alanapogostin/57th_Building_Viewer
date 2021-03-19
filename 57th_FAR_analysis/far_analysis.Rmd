@@ -1,10 +1,9 @@
 
 ```{r setup, include=FALSE}
 library(tidyverse)
-library(sf)
+library(sf) #Wrangling spatial data
 install.packages("mapview")
-library(mapview)
-library(stringr)
+library(mapview) #Quickly projecting map layers
 ```
 
 ## Importing the data
@@ -13,8 +12,6 @@ all_lots <- read_sf("~/Desktop/Github/57th_FAR/raw_data/57th_street_lots.geojson
  # select(!("cb2010", "cd", "ownertype", "landmark")) %>%
   st_transform(4326) %>% 
   st_as_sf()
-
-
 
 real_prop <- read_csv("~/Desktop/Github/57th_FAR/raw_data/real_property.csv") %>%
   filter(BLOCK > 900 & BLOCK < 1300 & AIR_RIGHTS == "Y")
@@ -32,6 +29,11 @@ all_lots <- all_lots %>%
   mutate(maxfar = max(CommFAR, ResidFAR, FacilFAR),
          greaterfar = case_when(BuiltFAR > maxfar ~ 1,
                                 BuiltFAR <= maxfar ~ 0),
+         scalefar = case_when(BuiltFAR <= 3 ~ "3 or Less",
+                              BuiltFAR > 3 & BuiltFAR <= 6 ~ "3-6",
+                              BuiltFAR > 6 & BuiltFAR <= 9 ~ "6-9",
+                              BuiltFAR > 9 & BuiltFAR <= 12 ~ "9-12",
+                              BuiltFAR > 12 ~ "12+"),
          BLOCK = Block,
          LOT = Lot)
 
@@ -75,5 +77,10 @@ skyscraper_lots <- all_lots %>%
   st_as_sf()
 
 mapview(all_lots)
+```
+# Writing geojson files
+```{r}
+sf::st_write(all_lots, "~/Desktop/Github/57th_FAR/data/skyscraper_lots.geojson", overwrite = TRUE, append = FALSE)
+sf::st_write(skyscraper_lots, "~/Desktop/Github/57th_FAR/data/all_lots.geojson", overwrite = TRUE, append = FALSE)
 ```
 
