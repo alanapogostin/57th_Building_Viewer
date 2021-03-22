@@ -1,38 +1,45 @@
-.container {
-  display: flex;
+
+
+html, body, .container, #sidebar-left, #mapContainer {
   height: 100%;
   margin: 0;
 }
 
+.container {
+  display: flex;
+}
+
+#mapContainer{
+  flex-grow: 1;
+  background-color: blue;
+  width: flex;
+}
+
 #sidebar-left {
   background: white;
-  width: 20%;
-  height: 100%;
-  box-sizing: border-box;
+  width: 250px;
   font-family: sans-serif;
   outline-width: medium;
   outline-color: black;
 }
-#sidebar-right{
-  background: white;
-  width: 20%;
-  height: 100%;
-  box-sizing: border-box;
-  font-family: sans-serif;
-  outline-width: medium;
-  outline-color: black;
-  right: 0;
-}
+
 .map-overlay {
-  background-color: grey;
   position: absolute;
+  bottom: 0;
+  left: 0;
   background: rgba(255, 255, 255, 0.8);
+  margin-left: 20px;
   font-family: Arial, sans-serif;
   overflow: auto;
   border-radius: 3px;
 }
-.mapContainer{
-  background-color: blue;
+
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+#map {
   position: absolute;
   top: 0;
   bottom: 0;
