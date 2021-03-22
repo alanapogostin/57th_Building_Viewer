@@ -1,5 +1,5 @@
 #sidebar-left {
-  background: grey;
+  background: white;
   width: 20%;
   height: 100%;
   box-sizing: border-box;
@@ -7,15 +7,15 @@
   outline-width: medium;
   outline-color: black;
 }
-#sidebar-right {
-  background: grey;
+#sidebar-right{
+  background: white;
   width: 20%;
   height: 100%;
-  right: 0;
   box-sizing: border-box;
   font-family: sans-serif;
   outline-width: medium;
   outline-color: black;
+  right: 0;
 }
 .map-overlay {
   background-color: grey;
