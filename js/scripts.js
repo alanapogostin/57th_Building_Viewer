@@ -19,9 +19,9 @@ map.on('style.load', function() {
     type: 'geojson',
     data: 'data/all_lots.geojson'
   });
+
 })
 
-// Adding 3d Buildings
 map.on('load', function() {
   // Insert the layer beneath any symbol layer.
   var layers = map.getStyle().layers;
@@ -33,6 +33,8 @@ map.on('load', function() {
       break;
     }
   }
+  // Adding 3d Buildings
+
   map.addLayer({
       'id': '3d-buildings',
       'source': 'composite',
@@ -68,7 +70,26 @@ map.on('load', function() {
     },
     labelLayerId
   );
+  map.on('load', function() {
+    var layers = ['0-20', '20-40', '40-60', '60-80', '80+'];
+    var colors = ['#fef0d9', '#fdcc8a', '#fc8d59', '#e34a33', '#b30000'];
 
+    for (i = 0; i < layers.length; i++) {
+      var layer = layers[i];
+      var color = colors[i];
+      var item = document.createElement('div');
+      var key = document.createElement('span');
+      key.className = 'legend-key';
+      key.style.backgroundColor = color;
+
+      var value = document.createElement('span');
+      value.innerHTML = layer;
+      item.appendChild(key);
+      item.appendChild(value);
+      legend.appendChild(item);
+    }
+
+  });
   /// Adding Number of Floors Fill
 
   map.addLayer({
@@ -96,26 +117,33 @@ map.on('load', function() {
       'fill-opacity': 0.8
     },
   });
-})
 
-map.on('load', function() {
-  var layers = ['0-20', '20-40', '40-60', '60-80', '80+'];
-  var colors = ['#fef0d9', '#fdcc8a', '#fc8d59', '#e34a33', '#b30000'];
-
-  for (i = 0; i < layers.length; i++) {
-    var layer = layers[i];
-    var color = colors[i];
-    var item = document.createElement('div');
-    var key = document.createElement('span');
-    key.className = 'legend-key';
-    key.style.backgroundColor = color;
-
-    var value = document.createElement('span');
-    value.innerHTML = layer;
-    item.appendChild(key);
-    item.appendChild(value);
-    legend.appendChild(item);
-  }
+//Adding in FAR layer
+/// Adding Number of Floors Fill
+map.addLayer({
+  'id': '57th_street_FAR_fill',
+  'type': 'fill',
+  'source': '57th_lots',
+  'layout': {},
+  'paint': {
+    'fill-color': [
+      'interpolate',
+      ['linear'],
+      ['get', 'BuiltFAR'],
+      5,
+      '#edf8fb',
+      10,
+      '#b3cde3',
+      15,
+      '#8c96c6',
+      20,
+      '#8856a7',
+      25,
+      '#810f7c'
+    ],
+    'fill-outline-color': '#ccc',
+    'fill-opacity': 0.8
+  },
 
 });
 
@@ -156,62 +184,33 @@ map.on('mousemove', function(e) {
   }
 })
 
-//Adding in FAR layer
-/// Adding Number of Floors Fill
-map.addLayer({
-  'id': '57th_street_FAR_fill',
-  'type': 'fill',
-  'source': '57th_lots',
-  'layout': {},
-  'paint': {
-    'fill-color': [
-      'interpolate',
-      ['linear'],
-      ['get', 'BuiltFAR'],
-      5,
-      '#edf8fb',
-      10,
-      '#b3cde3',
-      15,
-      '#8c96c6',
-      20,
-      '#8856a7',
-      25,
-      '#810f7c'
-    ],
-    'fill-outline-color': '#ccc',
-    'fill-opacity': 0.8
-  },
-
-});
-
-
 map.on('click', function() {
-var layers = ['0-5', '5-10', '10-15', '15-20', '20-25'];
-var colors = ['#edf8fb', '#b3cde3', '#8c96c6', '#8856a7', '#810f7c'];
+  var layers = ['0-5', '5-10', '10-15', '15-20', '20-25'];
+  var colors = ['#edf8fb', '#b3cde3', '#8c96c6', '#8856a7', '#810f7c'];
 
-for (i = 0; i < layers.length; i++) {
-  var layer = layers[i];
-  var color = colors[i];
-  var item = document.createElement('div');
-  var key = document.createElement('span');
-  key.className = 'legend-key';
-  key.style.backgroundColor = color;
+  for (i = 0; i < layers.length; i++) {
+    var layer = layers[i];
+    var color = colors[i];
+    var item = document.createElement('div');
+    var key = document.createElement('span');
+    key.className = 'legend-key';
+    key.style.backgroundColor = color;
 
-  var value = document.createElement('span');
-  value.innerHTML = layer;
-  item.appendChild(key);
-  item.appendChild(value);
-  legend.appendChild(item);
-}
-$('.btn-check#btnradioFAR').on('click', function(){
-  var layerVisibility = map.getLayoutProperty('57th_street_FAR_fill-fill','visibility')
-  if (layerVisibility=== 'visible') {
-    map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'none')
-    map.setLayoutProperty('zips', 'visibility', 'visible')
-  } else {
-    map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'visible')
-    map.setLayoutProperty('zips', 'visibility', 'none')
+    var value = document.createElement('span');
+    value.innerHTML = layer;
+    item.appendChild(key);
+    item.appendChild(value);
+    legend.appendChild(item);
   }
-})
+  })
+  $('.btn-check#btnradioFAR').on('click', function() {
+    var layerVisibility = map.getLayoutProperty('57th_street_FAR_fill', 'visibility')
+    if (layerVisibility === 'visible') {
+      map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'none')
+      map.setLayoutProperty('zips', 'visibility', 'visible')
+    } else {
+      map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'visible')
+      map.setLayoutProperty('zips', 'visibility', 'none')
+    }
+  })
 })
