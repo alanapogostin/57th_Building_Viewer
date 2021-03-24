@@ -1,18 +1,16 @@
 
 
-html, body, .container, #sidebar-left, #mapContainer {
+html, body, #container, #sidebar-left, #mapContainer, #sidebar-right {
   height: 100%;
   margin: 0;
 }
 
-.container {
+#container {
   display: flex;
 }
 
 #mapContainer{
   flex-grow: 1;
-  background-color: blue;
-  width: flex;
 }
 
 #sidebar-left {
@@ -38,4 +36,31 @@ html, body, .container, #sidebar-left, #mapContainer {
 body {
   margin: 0;
   padding: 0;
+}
+
+#sidebar-right{
+  background-color: light grey;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#features {
+  top: 0;
+  height: 100px;
+  margin-top: 20px;
+  width: 250px;
+}
+
+#legend {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.legend-key {
+  display: inline-block;
+  border-radius: 20%;
+  width: 30px;
+  height: 20px;
+  margin-left: 5px;
 }

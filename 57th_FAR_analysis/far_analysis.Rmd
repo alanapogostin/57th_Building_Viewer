@@ -72,15 +72,16 @@ skyscraperbbl <- c( 1013307502, #252e57th
                     1010290027, #Osborne Apartment House
                     1011050029 #Helena 57 West **this might be wrong
                     )
+
 skyscraper_lots <- all_lots %>%
   filter(BBL %in% skyscraperbbl)%>%
   st_as_sf()
 
-mapview(skyscraper_lots)
+mapview(all_lots)
 ```
 # Writing geojson files
 ```{r}
-sf::st_write(all_lots, "~/Desktop/Github/57th_FAR/data/skyscraper_lots.geojson", overwrite = TRUE, append = FALSE)
-sf::st_write(skyscraper_lots, "~/Desktop/Github/57th_FAR/data/all_lots.geojson", overwrite = TRUE, append = FALSE)
+sf::st_write(skyscraper_lots, "~/Desktop/Github/57th_FAR/data/skyscraper_lots.geojson", overwrite = TRUE, append = FALSE)
+sf::st_write(all_lots, "~/Desktop/Github/57th_FAR/data/all_lots.geojson", overwrite = TRUE, append = FALSE)
 ```
 
