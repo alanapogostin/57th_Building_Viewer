@@ -60,12 +60,17 @@ body {
 #building-name{
   height:20px;
   top:0;
-  background-color: blue;
+  font-family: Arial, sans-serif;
 }
+
 #building-pic{
   height: 200px;
   width: 100%;
-  background-color: green;
+}
+building-pic{
+  width: 200px;
+  height: 300px;
+  object-fit: contain;
 }
 #features {
   top: 0;
@@ -86,4 +91,9 @@ body {
   width: 30px;
   height: 20px;
   margin-left: 5px;
+}
+
+.hidden
+{
+   display: none
 }

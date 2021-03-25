@@ -212,25 +212,6 @@ map.on('mousemove', function(e) {
   }
 })
 
-// map.on('click', function() {
-//   var layers = ['0-5', '5-10', '10-15', '15-20', '20-25'];
-//   var colors = ['#edf8fb', '#b3cde3', '#8c96c6', '#8856a7', '#810f7c'];
-//
-//   for (i = 0; i < layers.length; i++) {
-//     var layer = layers[i];
-//     var color = colors[i];
-//     var item = document.createElement('div');
-//     var key = document.createElement('span');
-//     key.className = 'legend-key';
-//     key.style.backgroundColor = color;
-//
-//     var value = document.createElement('span');
-//     value.innerHTML = layer;
-//     item.appendChild(key);
-//     item.appendChild(value);
-//     legend.appendChild(item);
-//   }
-//   })
 /// FAR and Floor Button Connection
   $('.btn-check#btnradioFAR').on('click', function() {
     var layerVisibility = map.getLayoutProperty('57th_street_FAR_fill', 'visibility')
@@ -285,14 +266,94 @@ $('.btn-check#btnradioOFF').on('click', function() {
 
 // // //Building Info
 $('.btn-check').on('click', function() {
-	// pull out the album cover url from the element's attributes
 	var buildingPicUrl = $(this).attr('building-pic')
-  // log the album cover url to the console
   console.log(buildingPicUrl)
-
   $('#building-pic').empty()
-
   $('#building-pic').css('background-image', `url(${buildingPicUrl})`)
 
-
+  var buildingName = $(this).attr('building-name')
+  console.log(buildingName)
+  $('#building-name').empty()
+  $('#building-name').text(`${buildingName}`)
 })
+
+
+
+$('.btn-check').on('click',function () {
+  $("#p1").hide();
+  $("#p2").hide();
+  $("#p3").hide();
+
+    $('#btnradio1').click(function(){
+        // $("#p1").onClick();
+         $('#building-name').text('Sulfur Dioxide');
+    });
+
+    $("#btnradio2").click(function(){
+         $("#p2").toggle();
+    });
+
+    $("#btnradio3").click(function(){
+         $("#p3").toggle();
+    });
+    $("#btnradio4").click(function(){
+         $("#p4").toggle();
+    });
+    $("#btnradio5").click(function(){
+         $("#p5").toggle();
+    });
+    $("#btnradio6").click(function(){
+         $("#p6").toggle();
+    });
+    $("#btnradio7").click(function(){
+         $("#p7").toggle();
+    });
+});
+
+
+map.on('click', function(e) {
+  var skyscraper_outline = map.queryRenderedFeatures(e.point, {
+    layers: ['skyscraper_outline']
+  });
+  if (skyscraper_outline.length > 0) {
+    var hoveredFeature = skyscraper_outline[0]
+
+    document.getElementById('Address').innerHTML = '<h4 style = "font-size:800%" "text-align:center" ><strong>' + skyscraper_outline[0].properties.Address + '</strong></h4><p><strong><em>';
+    document.getElementById('NumFloors').innerHTML = 'address:<h4 style = "font-size:100%" "text-align:left">' + skyscraper_outline[0].properties.NumFloors + '</h4><p><strong><em>';
+    document.getElementById('BuiltFAR').innerHTML = 'energy score:<h4 style = "font-size:600%">' + skyscraper_outline[0].properties.BuiltFAR + '</h4><p><strong><em>';
+    document.getElementById('OwnerName').innerHTML = 'year built:<h4 style = "font-size:100%" "text-align:left">' + skyscraper_outline[0].properties.OwnerName+ '</h4><p><strong><em>';
+    // set this feature as the data for the highlight source
+    map.getSource('highlight-feature').setData(hoveredFeature.geometry);
+
+  } else {
+    document.getElementById('Address').innerHTML = '';
+    document.getElementById('NumFloors').innerHTML = '';
+    document.getElementById('BuiltFAR').innerHTML = '';
+    document.getElementById('OwnerName').innerHTML = '';
+    // reset the highlight source to an empty featurecollection
+      map.getSource('highlight-feature').setData({
+        type: 'FeatureCollection',
+        features: []
+      });
+  }
+});
+
+//Highlight when hover
+map.addSource('highlight-feature', {
+   type: 'geojson',
+   data: {
+     type: 'FeatureCollection',
+     features: []
+   }
+ })
+
+ map.addLayer({
+   id: 'highlight-line',
+   type: 'line',
+   source: 'highlight-feature',
+   paint: {
+     'line-width': 2,
+     'line-opacity': 1,
+     'line-color': 'black',
+   }
+ });
