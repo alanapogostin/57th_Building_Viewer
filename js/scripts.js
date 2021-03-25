@@ -286,57 +286,30 @@ $('.btn-check').on('click',function () {
 
     $('#btnradio1').click(function(){
         // $("#p1").onClick();
-         $('#building-name').text('Sulfur Dioxide');
+         $('#building-name').text('252 e 57th');
     });
 
     $("#btnradio2").click(function(){
-         $("#p2").toggle();
+        $('#building-name').text('Big Tetrahedron Building');
     });
 
-    $("#btnradio3").click(function(){
-         $("#p3").toggle();
-    });
     $("#btnradio4").click(function(){
-         $("#p4").toggle();
+         $('#building-name').text('432 Park Ave');
     });
     $("#btnradio5").click(function(){
-         $("#p5").toggle();
+         $('#building-name').text('220 Central Park South');
     });
     $("#btnradio6").click(function(){
-         $("#p6").toggle();
+         $('#building-name').text('111 West 57th');
     });
-    $("#btnradio7").click(function(){
-         $("#p7").toggle();
+    $("#btnradio8").click(function(){
+         $('#building-name').text('One57');
+    });
+    $("#btnradio9").click(function(){
+         $('#building-name').text('Helena 57 West');
     });
 });
 
-
-map.on('click', function(e) {
-  var skyscraper_outline = map.queryRenderedFeatures(e.point, {
-    layers: ['skyscraper_outline']
-  });
-  if (skyscraper_outline.length > 0) {
-    var hoveredFeature = skyscraper_outline[0]
-
-    document.getElementById('Address').innerHTML = '<h4 style = "font-size:800%" "text-align:center" ><strong>' + skyscraper_outline[0].properties.Address + '</strong></h4><p><strong><em>';
-    document.getElementById('NumFloors').innerHTML = 'address:<h4 style = "font-size:100%" "text-align:left">' + skyscraper_outline[0].properties.NumFloors + '</h4><p><strong><em>';
-    document.getElementById('BuiltFAR').innerHTML = 'energy score:<h4 style = "font-size:600%">' + skyscraper_outline[0].properties.BuiltFAR + '</h4><p><strong><em>';
-    document.getElementById('OwnerName').innerHTML = 'year built:<h4 style = "font-size:100%" "text-align:left">' + skyscraper_outline[0].properties.OwnerName+ '</h4><p><strong><em>';
-    // set this feature as the data for the highlight source
-    map.getSource('highlight-feature').setData(hoveredFeature.geometry);
-
-  } else {
-    document.getElementById('Address').innerHTML = '';
-    document.getElementById('NumFloors').innerHTML = '';
-    document.getElementById('BuiltFAR').innerHTML = '';
-    document.getElementById('OwnerName').innerHTML = '';
-    // reset the highlight source to an empty featurecollection
-      map.getSource('highlight-feature').setData({
-        type: 'FeatureCollection',
-        features: []
-      });
-  }
-});
 
 //Highlight when hover
 map.addSource('highlight-feature', {
