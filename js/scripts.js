@@ -183,7 +183,7 @@ var popup = new mapboxgl.Popup({
 map.on('mousemove', function(e) {
 
   var features = map.queryRenderedFeatures(e.point, {
-    layers: ['57th_street_floors_fill'],
+    layers: ['57th_street_floors_fill', '57th_street_FAR_fill'],
   });
 
   if (features.length > 0) {
@@ -283,14 +283,16 @@ $('.btn-check#btnradioOFF').on('click', function() {
   }
 })
 
-// //Building Info
-// $('.album-list-item').on('click', function() {
-// 	// pull out the album cover url from the element's attributes
-// 	var albumCoverUrl = $(this).attr('data-album-cover')
-//   // log the album cover url to the console
-//   console.log(albumCoverUrl)
-//
-//   $('#album-art').empty()
-//
-//   $('#album-art').css('background-image', `url(${albumCoverUrl})`)
-// })
+// // //Building Info
+$('.btn-check').on('click', function() {
+	// pull out the album cover url from the element's attributes
+	var buildingPicUrl = $(this).attr('building-pic')
+  // log the album cover url to the console
+  console.log(buildingPicUrl)
+
+  $('#building-pic').empty()
+
+  $('#building-pic').css('background-image', `url(${buildingPicUrl})`)
+
+
+})
