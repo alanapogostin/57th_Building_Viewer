@@ -14,10 +14,15 @@ var nav = new mapboxgl.NavigationControl();
 map.addControl(nav, 'top-left');
 
 map.on('style.load', function() {
-  //add the geo source
+  //adding in the lot chloropleth
   map.addSource('57th_lots', {
     type: 'geojson',
     data: 'data/all_lots.geojson'
+  });
+  //adding in the highlights for buildings
+  map.addSource('skyscraper_lots', {
+    type: 'geojson',
+    data: 'data/skyscraper_lots.geojson'
   });
 
 })
@@ -70,6 +75,8 @@ map.on('load', function() {
     },
     labelLayerId
   );
+
+  //Adding in Floor
   map.on('load', function() {
     var layers = ['0-20', '20-40', '40-60', '60-80', '80+'];
     var colors = ['#fef0d9', '#fdcc8a', '#fc8d59', '#e34a33', '#b30000'];
@@ -88,8 +95,35 @@ map.on('load', function() {
       item.appendChild(value);
       legend.appendChild(item);
     }
-
   });
+  //Adding in FAR layer
+  /// Adding Number of Floors Fill
+  map.addLayer({
+    'id': '57th_street_FAR_fill',
+    'type': 'fill',
+    'source': '57th_lots',
+    'layout': {},
+    'paint': {
+      'fill-color': [
+        'interpolate',
+        ['linear'],
+        ['get', 'BuiltFAR'],
+        5,
+        '#edf8fb',
+        10,
+        '#b3cde3',
+        15,
+        '#8c96c6',
+        20,
+        '#8856a7',
+        25,
+        '#810f7c'
+      ],
+      'fill-outline-color': '#ccc',
+      'fill-opacity': 0.8
+    },
+    });
+
   /// Adding Number of Floors Fill
 
   map.addLayer({
@@ -117,34 +151,17 @@ map.on('load', function() {
       'fill-opacity': 0.8
     },
   });
-
-//Adding in FAR layer
-/// Adding Number of Floors Fill
-map.addLayer({
-  'id': '57th_street_FAR_fill',
-  'type': 'fill',
-  'source': '57th_lots',
-  'layout': {},
-  'paint': {
-    'fill-color': [
-      'interpolate',
-      ['linear'],
-      ['get', 'BuiltFAR'],
-      5,
-      '#edf8fb',
-      10,
-      '#b3cde3',
-      15,
-      '#8c96c6',
-      20,
-      '#8856a7',
-      25,
-      '#810f7c'
-    ],
-    'fill-outline-color': '#ccc',
-    'fill-opacity': 0.8
-  },
-
+  // Adding In Skyscraper highlights
+  map.addLayer({
+    'id': 'skyscraper_outline',
+    'type': 'line',
+    'source': 'skyscraper_lots',
+    'layout': {},
+    'paint': {
+      'line-color': '#00FF00',
+      'line-width': 2.5
+    },
+    });
 });
 
 // Adding a interactive feature
@@ -184,33 +201,68 @@ map.on('mousemove', function(e) {
   }
 })
 
-map.on('click', function() {
-  var layers = ['0-5', '5-10', '10-15', '15-20', '20-25'];
-  var colors = ['#edf8fb', '#b3cde3', '#8c96c6', '#8856a7', '#810f7c'];
-
-  for (i = 0; i < layers.length; i++) {
-    var layer = layers[i];
-    var color = colors[i];
-    var item = document.createElement('div');
-    var key = document.createElement('span');
-    key.className = 'legend-key';
-    key.style.backgroundColor = color;
-
-    var value = document.createElement('span');
-    value.innerHTML = layer;
-    item.appendChild(key);
-    item.appendChild(value);
-    legend.appendChild(item);
-  }
-  })
+// map.on('click', function() {
+//   var layers = ['0-5', '5-10', '10-15', '15-20', '20-25'];
+//   var colors = ['#edf8fb', '#b3cde3', '#8c96c6', '#8856a7', '#810f7c'];
+//
+//   for (i = 0; i < layers.length; i++) {
+//     var layer = layers[i];
+//     var color = colors[i];
+//     var item = document.createElement('div');
+//     var key = document.createElement('span');
+//     key.className = 'legend-key';
+//     key.style.backgroundColor = color;
+//
+//     var value = document.createElement('span');
+//     value.innerHTML = layer;
+//     item.appendChild(key);
+//     item.appendChild(value);
+//     legend.appendChild(item);
+//   }
+//   })
+/// FAR and Floor Button Connection
   $('.btn-check#btnradioFAR').on('click', function() {
     var layerVisibility = map.getLayoutProperty('57th_street_FAR_fill', 'visibility')
     if (layerVisibility === 'visible') {
       map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'none')
-      map.setLayoutProperty('zips', 'visibility', 'visible')
+      map.setLayoutProperty('visibility', 'visible')
+      map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'visible')
+      map.setLayoutProperty('visibility', 'none')
     } else {
       map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'visible')
-      map.setLayoutProperty('zips', 'visibility', 'none')
+      map.setLayoutProperty('visibility', 'none')
+      map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'none')
+      map.setLayoutProperty('visibility', 'visible')
     }
   })
+
+
+$('.btn-check#btnradioNumFloors').on('click', function() {
+  var layerVisibility = map.getLayoutProperty('57th_street_floors_fill', 'visibility')
+  if (layerVisibility === 'visible') {
+    map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'none')
+    map.setLayoutProperty('visibility', 'visible')
+    map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'visible')
+    map.setLayoutProperty('visibility', 'none')
+  } else {
+    map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'visible')
+    map.setLayoutProperty('visibility', 'none')
+    map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'none')
+    map.setLayoutProperty('visibility', 'visible')
+  }
 })
+
+// $('.btn-check#btnradioOFF').on('click', function() {
+//   var layerVisibility = map.getLayoutProperty('57th_street_floors_fill', 'none')
+//   if (layerVisibility === 'none') {
+//     map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'none')
+//     map.setLayoutProperty('visibility', 'none')
+//     map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'none')
+//     map.setLayoutProperty('visibility', 'none')
+//   } else {
+//     map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'none')
+//     map.setLayoutProperty('visibility', 'none')
+//     map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'none')
+//     map.setLayoutProperty('visibility', 'none')
+//   }
+// })
