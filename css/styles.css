@@ -63,6 +63,14 @@ body {
   font-family: Arial, sans-serif;
 }
 
+#building-text{
+  font-family: Arial, sans-serif;
+  font-size: 12;
+  font-color: grey;
+  display: flex;
+  margin: 15;
+}
+
 #building-pic{
   height: 200px;
   width: 100%;

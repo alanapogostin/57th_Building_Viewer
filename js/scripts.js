@@ -271,42 +271,41 @@ $('.btn-check').on('click', function() {
   $('#building-pic').empty()
   $('#building-pic').css('background-image', `url(${buildingPicUrl})`)
 
-  var buildingName = $(this).attr('building-name')
-  console.log(buildingName)
-  $('#building-name').empty()
-  $('#building-name').text(`${buildingName}`)
 })
 
 
 
 $('.btn-check').on('click',function () {
-  $("#p1").hide();
-  $("#p2").hide();
-  $("#p3").hide();
-
     $('#btnradio1').click(function(){
         // $("#p1").onClick();
          $('#building-name').text('252 e 57th');
+         $('#building-text').text('252 East 57th Street is a mixed use modernist style residential skyscraper in Midtown Manhattan, New York City, developed by the World Wide Group and Rose Associates, Inc. The building has a total of 436,000 sq ft of floor area.');
     });
 
     $("#btnradio2").click(function(){
         $('#building-name').text('Big Tetrahedron Building');
+        $('#building-text').text('The Big Tetrahedron Building, also known as VIA 57 West, is a 41-story building  designed by the Danish Architect Bjarke Ingels of the BIG Group. The building is known for its unique pyrimid, or "tetrahedron" shape.');
     });
 
     $("#btnradio4").click(function(){
          $('#building-name').text('432 Park Ave');
+         $('#building-text').text('432 Park Avenue is a residential skyscraper at 57th Street and Park Avenue in Midtown Manhattan in New York City, overlooking Central Park. The 1,396-foot-tall (425.5 m) tower was developed by CIM Group and Harry B. Macklowe and designed by Rafael Viñoly. It features 125 condominiums as well as amenities such as a private restaurant for residents.');
     });
     $("#btnradio5").click(function(){
          $('#building-name').text('220 Central Park South');
+         $('#building-text').text('220 Central Park South was designed by Robert A.M. Stern Architects and SLCE Architects, with interiors designed by Thierry Despont. The limestone facade is intended to blend in with other buildings around Central Park. The building was constructed in 1954 on top of a site of rent-stabilized appartments.');
     });
     $("#btnradio6").click(function(){
-         $('#building-name').text('111 West 57th');
+         $('#building-name').text('Steinway Tower');
+         $('#building-text').text('Steinway Tower, located on 111 West 57th Street, is a residential skyscraper developed by by JDS Development Group and Property Markets Group. Steinway Tower consists of two sections: Steinway Hall, a 16-story former Steinway & Sons store at the buildings base designed by Warren and Wetmore, and a newer 84-story, 1,428-foot tower adjacent to Steinway Hall, designed by SHoP Architects. The building is expected to be completed by the end of this year.');
     });
     $("#btnradio8").click(function(){
          $('#building-name').text('One57');
+         $('#building-text').text('One57, formerly known as Carnegie 57, was completed in 2014 and constructed by Extell Development Company and designed by Christian de Portzamparc. Extell CEO Gary Barnett started acquiring One57s site in 1998, although building plans were not filed until 2009. One57 held the spot as the tallest residential building, until 432 Park Ave was constructed.');
     });
     $("#btnradio9").click(function(){
          $('#building-name').text('Helena 57 West');
+         $('#building-text').text('Helena 57 West was built in 2005 by The Durst Organization. The entire block that the building sits on is owned by The Durst Organization. There are a total of 597-units in the building.');
     });
 });
 
