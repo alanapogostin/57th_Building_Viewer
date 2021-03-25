@@ -31,6 +31,9 @@ html, body, #container, #sidebar-left, #mapContainer, #sidebar-right {
 
 }
 
+#card-source{
+  font-color: grey;
+}
 .map-overlay {
   position: absolute;
   top: 65;

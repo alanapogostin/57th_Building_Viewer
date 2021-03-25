@@ -96,6 +96,17 @@ map.on('load', function() {
       legend.appendChild(item);
     }
   });
+
+  map.addLayer({
+    'id': '57th_street_off',
+    'type': 'line',
+    'source': '57th_lots',
+    'layout': {},
+    'paint': {
+      'line-color': '#a9a9a9',
+      'line-width': 0.8
+    },
+    });
   //Adding in FAR layer
   /// Adding Number of Floors Fill
   map.addLayer({
@@ -252,19 +263,34 @@ $('.btn-check#btnradioNumFloors').on('click', function() {
   }
 })
 
+// turn off layers
 $('.btn-check#btnradioOFF').on('click', function() {
-  var layerVisibility = map.getLayoutProperty('57th_street_floors_fill', 'none')
+  var layerVisibility = map.getLayoutProperty('57th_street_off', 'visibility')
   if (layerVisibility === 'visible') {
-    map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'none')
-    map.setLayoutProperty('visibility', 'none')
-    map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'none')
+    map.setLayoutProperty('57th_street_off', 'visibility', 'none')
+    map.setLayoutProperty('visibility', 'visible')
+    map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'visible')
+    map.setLayoutProperty('visibility', 'visible')
+    map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'visible')
     map.setLayoutProperty('visibility', 'none')
   } else {
+    map.setLayoutProperty('57th_street_off', 'visibility', 'visible')
+    map.setLayoutProperty('visibility', 'visible')
     map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'none')
-    map.setLayoutProperty('visibility', 'none')
+    map.setLayoutProperty('visibility', 'visible')
     map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'none')
     map.setLayoutProperty('visibility', 'none')
   }
 })
 
-//Building Info
+// //Building Info
+// $('.album-list-item').on('click', function() {
+// 	// pull out the album cover url from the element's attributes
+// 	var albumCoverUrl = $(this).attr('data-album-cover')
+//   // log the album cover url to the console
+//   console.log(albumCoverUrl)
+//
+//   $('#album-art').empty()
+//
+//   $('#album-art').css('background-image', `url(${albumCoverUrl})`)
+// })
