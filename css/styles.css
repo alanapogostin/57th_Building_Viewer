@@ -13,18 +13,28 @@ html, body, #container, #sidebar-left, #mapContainer, #sidebar-right {
   flex-grow: 1;
 }
 
-#sidebar-left {
-  background: white;
-  width: 250px;
+#sidebar-right, #sidebar-left{
   font-family: sans-serif;
   outline-width: medium;
   outline-color: black;
+  background-color: light grey;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  box-sizing: border-box;
+}
+#sidebar-right{
+  right: 0;
+}
+
+#sidebar-left {
+
 }
 
 .map-overlay {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  top: 65;
+  left: 55%;
   background: rgba(255, 255, 255, 0.8);
   margin-left: 20px;
   font-family: Arial, sans-serif;
@@ -38,19 +48,16 @@ body {
   padding: 0;
 }
 
-#sidebar-right{
-  background-color: light grey;
-  right: 0;
-  width: 20%;
-  height: 100%;
-  box-sizing: border-box;
+#info-box{
+  width: flex;
+  height: flex;
+  background-color: blue;
 }
-
 #features {
   top: 0;
   height: 100px;
   margin-top: 20px;
-  width: 250px;
+  width: flex;
 }
 
 #legend {
