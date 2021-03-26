@@ -255,7 +255,7 @@ $('.btn-check').on('click', function() {
     $('#building-pic').html(streetviewIframeCode)
     map.flyTo({
       center: [-73.97176020174729, 40.761737408528056],
-      "zoom": 15.5
+      "zoom": 17
     });
   });
   $("#btnradio5").click(function() {
@@ -267,7 +267,7 @@ $('.btn-check').on('click', function() {
     $('#building-pic').html(streetviewIframeCode)
     map.flyTo({
       center: [-73.98115133200699, 40.76772659198911],
-      "zoom": 15.5
+      "zoom": 16
     });
   });
   $("#btnradio6").click(function() {
