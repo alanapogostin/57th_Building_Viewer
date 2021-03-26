@@ -14,4 +14,4 @@ In addition to the map, the reposititory contains an <a href="https://github.com
 
 <a href="https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page"> NYC Pluto data </a> was used to create the map. 
 
-### Click <a href-"https://alanapogostin.github.io/57th_Building_Viewer/"> here</a> to view the map and see some skyscrapers!
+### Click <a href="https://alanapogostin.github.io/57th_Building_Viewer/"> here </a> to view the map and see some skyscrapers!
