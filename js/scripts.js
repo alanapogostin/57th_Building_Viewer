@@ -194,7 +194,7 @@ map.on('mousemove', function(e) {
 })
 
 //Adding in Floor legend
-$('.btn-check#btnradioFAR').on('click', function() {
+map.on('load', function() {
   var layers = ['0-20', '20-40', '40-60', '60-80', '80+', 'Skyscrapers'];
   var colors = ['#fef0d9', '#fdcc8a', '#fc8d59', '#e34a33', '#b30000', '#00FF00'];
 
@@ -203,7 +203,7 @@ $('.btn-check#btnradioFAR').on('click', function() {
     var colorFloor = colors[i];
     var item = document.createElement('div');
     var key = document.createElement('span');
-    key.className = 'legend-key';
+    key.className = 'legend-key-1';
     key.style.backgroundColor = colorFloor;
     var value = document.createElement('span');
     value.innerHTML = layerFloor;
@@ -216,33 +216,41 @@ $('.btn-check#btnradioFAR').on('click', function() {
 /// FAR and Floor Button Connection
 
 $('.btn-check').on('click',function () {
-  $('.btn-check#btnradioFAR').on('click', function() {
+  $('.btn-check#btnradioNumFloors').on('click', function() {
     var layerVisibility = map.getLayoutProperty('57th_street_FAR_fill', 'visibility')
     if (layerVisibility === 'visible') {
-      map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'none')
+      map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'visible')
       map.setLayoutProperty('visibility', 'visible')
       map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'visible')
       map.setLayoutProperty('visibility', 'none')
+      map.setLayoutProperty('57th_street_off', 'visibility', 'visible')
+      map.setLayoutProperty('visibility', 'visible')
     } else {
       map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'visible')
       map.setLayoutProperty('visibility', 'none')
       map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'none')
       map.setLayoutProperty('visibility', 'visible')
+      map.setLayoutProperty('57th_street_off', 'visibility', 'visible')
+      map.setLayoutProperty('visibility', 'none')
     }
   })
 
-  $('.btn-check#btnradioNumFloors').on('click', function() {
+  $('.btn-check#btnradioFAR').on('click', function() {
     var layerVisibility = map.getLayoutProperty('57th_street_floors_fill', 'visibility')
     if (layerVisibility === 'visible') {
-      map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'none')
-      map.setLayoutProperty('visibility', 'visible')
-      map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'visible')
-      map.setLayoutProperty('visibility', 'none')
-    } else {
       map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'visible')
-      map.setLayoutProperty('visibility', 'none')
-      map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'none')
       map.setLayoutProperty('visibility', 'visible')
+      map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'none')
+      map.setLayoutProperty('visibility', 'none')
+      map.setLayoutProperty('57th_street_off', 'visibility', 'visible')
+      map.setLayoutProperty('visibility', 'visible')
+    } else {
+      map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'none')
+      map.setLayoutProperty('visibility', 'none')
+      map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'visible')
+      map.setLayoutProperty('visibility', 'visible')
+      map.setLayoutProperty('57th_street_off', 'visibility', 'none')
+      map.setLayoutProperty('visibility', 'none')
     }
   })
 
@@ -251,35 +259,23 @@ $('.btn-check').on('click',function () {
 $('.btn-check#btnradioOFF').on('click', function() {
   var layerVisibility = map.getLayoutProperty('57th_street_off', 'visibility')
   if (layerVisibility === 'visible') {
-    map.setLayoutProperty('57th_street_off', 'visibility', 'none')
+    map.setLayoutProperty('57th_street_off', 'visibility', 'visible')
     map.setLayoutProperty('visibility', 'visible')
     map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'visible')
     map.setLayoutProperty('visibility', 'visible')
-    map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'visible')
+    map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'none')
     map.setLayoutProperty('visibility', 'none')
   } else {
     map.setLayoutProperty('57th_street_off', 'visibility', 'visible')
     map.setLayoutProperty('visibility', 'visible')
-    map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'none')
+    map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'visible')
     map.setLayoutProperty('visibility', 'visible')
     map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'none')
     map.setLayoutProperty('visibility', 'none')
   }
 })
 })
-// // //Building Info
-// $('.btn-check').on('load',function () {
-//     $('#btnradio1').click(function(){
-//         // $("#p1").onClick();
-//          $('#building-name').text('252 e 57th');
-//          $('#building-text').text('252 East 57th Street is a mixed use modernist style residential skyscraper in Midtown Manhattan, New York City, developed by the World Wide Group and Rose Associates, Inc. The building has a total of 436,000 sq ft of floor area.');
-//          var streetviewIframeCode = `<iframe src="https://www.google.com/maps/embed?pb=!4v1616720061015!6m8!1m7!1solmMBqWODVs5BynUGrY9Og!2m2!1d40.7590908835685!2d-73.96550381647552!3f310.46249877336686!4f52.671057075068006!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
-//          $('#building-pic').empty()
-//          $('#building-pic').html(streetviewIframeCode)
-//          map.flyTo({
-//             center: [-73.99164928273365, 40.77096097471898]
-//     });
-//   });
+
 
 $('.btn-check').on('click',function () {
     $('#btnradio1').click(function(){
@@ -290,7 +286,8 @@ $('.btn-check').on('click',function () {
          //$('#building-pic').empty()
          $('#building-pic').html(streetviewIframeCode)
          map.flyTo({
-            center: [-73.99164928273365, 40.77096097471898]
+            center: [-73.99164928273365, 40.77096097471898],
+            "zoom": 15.5
     });
     });
 
@@ -301,7 +298,8 @@ $('.btn-check').on('click',function () {
         $('#building-pic').empty()
         $('#building-pic').html(streetviewIframeCode)
         map.flyTo({
-           center: [ -73.99323831851291, 40.771821105468526]
+           center: [ -73.99323831851291, 40.771821105468526],
+           "zoom": 15.5
    });
     });
 
@@ -312,7 +310,8 @@ $('.btn-check').on('click',function () {
          $('#building-pic').empty()
          $('#building-pic').html(streetviewIframeCode)
          map.flyTo({
-            center: [ -73.97176020174729, 40.761737408528056]
+            center: [ -73.97176020174729, 40.761737408528056],
+            "zoom": 15.5
     });
     });
     $("#btnradio5").click(function(){
@@ -322,7 +321,8 @@ $('.btn-check').on('click',function () {
          $('#building-pic').empty()
          $('#building-pic').html(streetviewIframeCode)
          map.flyTo({
-            center: [-73.98115133200699, 40.76772659198911]
+            center: [-73.98115133200699, 40.76772659198911],
+            "zoom": 15.5
     });
     });
     $("#btnradio6").click(function(){
@@ -332,7 +332,8 @@ $('.btn-check').on('click',function () {
          $('#building-pic').empty()
          $('#building-pic').html(streetviewIframeCode)
          map.flyTo({
-            center: [-73.9779032338546, 40.76493171695457]
+            center: [-73.9779032338546, 40.76493171695457],
+            "zoom": 15.5
     });
     });
     $("#btnradio8").click(function(){
@@ -342,7 +343,8 @@ $('.btn-check').on('click',function () {
          $('#building-pic').empty()
          $('#building-pic').html(streetviewIframeCode)
          map.flyTo({
-            center: [-73.979125145501, 40.76557477497466]
+            center: [-73.979125145501, 40.76557477497466],
+            "zoom": 15.5
     });
 
     });
@@ -353,7 +355,8 @@ $('.btn-check').on('click',function () {
          $('#building-pic').empty()
          $('#building-pic').html(streetviewIframeCode)
          map.flyTo({
-            center: [-73.99178283385433, 40.771012509194534]
+            center: [-73.99178283385433, 40.771012509194534],
+            "zoom": 15.5
     });
     });
 });
