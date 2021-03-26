@@ -218,61 +218,40 @@ map.on('load', function() {
 $('.btn-check').on('click',function () {
   $('.btn-check#btnradioNumFloors').on('click', function() {
     var layerVisibility = map.getLayoutProperty('57th_street_FAR_fill', 'visibility')
-    if (layerVisibility === 'visible') {
+  //  if (layerVisibility === 'visible') {
       map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'visible')
-      map.setLayoutProperty('visibility', 'visible')
+    //  map.setLayoutProperty('visibility', 'visible')
       map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'visible')
-      map.setLayoutProperty('visibility', 'none')
+    //  map.setLayoutProperty('visibility', 'none')
       map.setLayoutProperty('57th_street_off', 'visibility', 'visible')
-      map.setLayoutProperty('visibility', 'visible')
-    } else {
-      map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'visible')
-      map.setLayoutProperty('visibility', 'none')
-      map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'none')
-      map.setLayoutProperty('visibility', 'visible')
-      map.setLayoutProperty('57th_street_off', 'visibility', 'visible')
-      map.setLayoutProperty('visibility', 'none')
-    }
+    //  map.setLayoutProperty('visibility', 'visible')
+  //  }
   })
 
   $('.btn-check#btnradioFAR').on('click', function() {
     var layerVisibility = map.getLayoutProperty('57th_street_floors_fill', 'visibility')
-    if (layerVisibility === 'visible') {
-      map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'visible')
-      map.setLayoutProperty('visibility', 'visible')
-      map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'none')
-      map.setLayoutProperty('visibility', 'none')
-      map.setLayoutProperty('57th_street_off', 'visibility', 'visible')
-      map.setLayoutProperty('visibility', 'visible')
-    } else {
+  //  if (layerVisibility === 'visible') {
       map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'none')
-      map.setLayoutProperty('visibility', 'none')
+      //map.setLayoutProperty('visibility', 'visible')
       map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'visible')
-      map.setLayoutProperty('visibility', 'visible')
-      map.setLayoutProperty('57th_street_off', 'visibility', 'none')
-      map.setLayoutProperty('visibility', 'none')
-    }
+      //map.setLayoutProperty('visibility', 'none')
+      map.setLayoutProperty('57th_street_off', 'visibility', 'visible')
+      //map.setLayoutProperty('visibility', 'visible')
+  //   }
   })
 
 
 // turn off layer
 $('.btn-check#btnradioOFF').on('click', function() {
   var layerVisibility = map.getLayoutProperty('57th_street_off', 'visibility')
-  if (layerVisibility === 'visible') {
+  //if (layerVisibility === 'visible') {
     map.setLayoutProperty('57th_street_off', 'visibility', 'visible')
-    map.setLayoutProperty('visibility', 'visible')
-    map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'visible')
-    map.setLayoutProperty('visibility', 'visible')
+    //map.setLayoutProperty('visibility', 'visible')
+    map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'none')
+  //  map.setLayoutProperty('visibility', 'visible')
     map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'none')
-    map.setLayoutProperty('visibility', 'none')
-  } else {
-    map.setLayoutProperty('57th_street_off', 'visibility', 'visible')
-    map.setLayoutProperty('visibility', 'visible')
-    map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'visible')
-    map.setLayoutProperty('visibility', 'visible')
-    map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'none')
-    map.setLayoutProperty('visibility', 'none')
-  }
+  //  map.setLayoutProperty('visibility', 'visible')
+  // } 
 })
 })
 
