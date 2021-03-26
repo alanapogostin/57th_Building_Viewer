@@ -58,19 +58,26 @@ body {
   background-color: white;
 }
 #building-name{
-  height:20px;
+  height:10px;
+  text-align: center;
+  font-size: 16;
+  margin: 15;
   top:0;
-  font-style: oblique;
   font-family: Arial, sans-serif;
 }
 
 #building-text{
   font-family: Arial, sans-serif;
   bottom: 0;
-  font-size: 12;
+  text-align: left;
+  font-size: 11;
   font-color: grey;
   display: flex;
   margin: 15;
+}
+#building-address{
+  font-size: 12;
+  text-align: center;
 }
 
 #building-pic{

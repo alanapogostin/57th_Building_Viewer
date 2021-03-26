@@ -222,11 +222,12 @@ $('.btn-check').on('click', function() {
   $('#btnradio1').click(function() {
     // $("#p1").onClick();
     $('#building-name').text('252 e 57th');
+    $('#building-address').text('()');
     $('#building-text').text('252 East 57th Street is a mixed use modernist style residential skyscraper in Midtown Manhattan, New York City, developed by the World Wide Group and Rose Associates, Inc. The building has a total of 436,000 sq ft of floor area.');
     var streetviewIframeCode = `<iframe src="https://www.google.com/maps/embed?pb=!4v1616720061015!6m8!1m7!1solmMBqWODVs5BynUGrY9Og!2m2!1d40.7590908835685!2d-73.96550381647552!3f310.46249877336686!4f52.671057075068006!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
     $('#building-pic').html(streetviewIframeCode)
     map.flyTo({
-      center: [-73.99164928273365, 40.77096097471898],
+      center: [-73.96588647877252, 40.75915415324138],
       "zoom": 15.5
     });
   });
@@ -234,18 +235,20 @@ $('.btn-check').on('click', function() {
 
   $("#btnradio2").click(function() {
     $('#building-name').text('Big Tetrahedron Building');
+    $('#building-address').text('(625 W 57th St)');
     $('#building-text').text('The Big Tetrahedron Building, also known as VIA 57 West, is a 41-story building  designed by the Danish Architect Bjarke Ingels of the BIG Group. The building is known for its unique pyrimid, or "tetrahedron" shape.');
     var streetviewIframeCode = `<iframe src="https://www.google.com/maps/embed?pb=!4v1616721059731!6m8!1m7!1sORWOgJwHApEX-6sCZTFGPg!2m2!1d40.77211443117792!2d-73.99363484185407!3f141.41587227542627!4f20.138134998705723!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
     $('#building-pic').empty()
     $('#building-pic').html(streetviewIframeCode)
     map.flyTo({
       center: [-73.99323831851291, 40.771821105468526],
-      "zoom": 15.5
+      "zoom": 17
     });
   });
 
   $("#btnradio4").click(function() {
     $('#building-name').text('432 Park Ave');
+    $('#building-address').text('(432 Park Ave)');
     $('#building-text').text('432 Park Avenue is a residential skyscraper at 57th Street and Park Avenue in Midtown Manhattan in New York City, overlooking Central Park. The 1,396-foot-tall (425.5 m) tower was developed by CIM Group and Harry B. Macklowe and designed by Rafael Viñoly. It features 125 condominiums as well as amenities such as a private restaurant for residents.');
     var streetviewIframeCode = `<iframe src="https://www.google.com/maps/embed?pb=!4v1616721151608!6m8!1m7!1s_S5cyMMXWtL7crrp33eVCw!2m2!1d40.76127213063792!2d-73.97205055455967!3f15.286090492905696!4f56.08728513782489!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
     $('#building-pic').empty()
@@ -257,6 +260,7 @@ $('.btn-check').on('click', function() {
   });
   $("#btnradio5").click(function() {
     $('#building-name').text('220 Central Park South');
+    $('#building-address').text('(220 Central Park South)');
     $('#building-text').text('220 Central Park South was designed by Robert A.M. Stern Architects and SLCE Architects, with interiors designed by Thierry Despont. The limestone facade is intended to blend in with other buildings around Central Park. The building was constructed in 1954 on top of a site of rent-stabilized appartments.');
     var streetviewIframeCode = `<iframe src="https://www.google.com/maps/embed?pb=!4v1616721206853!6m8!1m7!1snGRtsyeRjKZ_sdTk7xgopg!2m2!1d40.76733361619728!2d-73.98007103036878!3f202.25514752355!4f47.29894444977293!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
     $('#building-pic').empty()
@@ -268,36 +272,39 @@ $('.btn-check').on('click', function() {
   });
   $("#btnradio6").click(function() {
     $('#building-name').text('Steinway Tower');
+    $('#building-address').text('(109 -111 West 57th Street)');
     $('#building-text').text('Steinway Tower, located on 111 West 57th Street, is a residential skyscraper developed by by JDS Development Group and Property Markets Group. Steinway Tower consists of two sections: Steinway Hall, a 16-story former Steinway & Sons store at the buildings base designed by Warren and Wetmore, and a newer 84-story, 1,428-foot tower adjacent to Steinway Hall, designed by SHoP Architects. The building is expected to be completed by the end of this year.');
     var streetviewIframeCode = `<iframe src="https://www.google.com/maps/embed?pb=!4v1616721252327!6m8!1m7!1sCAoSLEFGMVFpcFBRN3ZEcFhLb3Vpb0JfYXAwTXhtS1lrMzhMWjlPUF9zSmxUc01n!2m2!1d40.7648392!2d-73.9779892!3f82.75415537404595!4f38.17179484624219!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
     $('#building-pic').empty()
     $('#building-pic').html(streetviewIframeCode)
     map.flyTo({
       center: [-73.9779032338546, 40.76493171695457],
-      "zoom": 15.5
+      "zoom": 18
     });
   });
   $("#btnradio8").click(function() {
     $('#building-name').text('One57');
+    $('#building-address').text('(157 W 57th St)');
     $('#building-text').text('One57, formerly known as Carnegie 57, was completed in 2014 and constructed by Extell Development Company and designed by Christian de Portzamparc. Extell CEO Gary Barnett started acquiring One57s site in 1998, although building plans were not filed until 2009. One57 held the spot as the tallest residential building, until 432 Park Ave was constructed.');
     var streetviewIframeCode = `<iframe src="https://www.google.com/maps/embed?pb=!4v1616721316225!6m8!1m7!1snSNoBmvstsfBbpHLXF8MuA!2m2!1d40.76524640269782!2d-73.97940967071713!3f49.62740778983144!4f59.42949705978526!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
     $('#building-pic').empty()
     $('#building-pic').html(streetviewIframeCode)
     map.flyTo({
       center: [-73.979125145501, 40.76557477497466],
-      "zoom": 15.5
+      "zoom": 18
     });
 
   });
   $("#btnradio9").click(function() {
     $('#building-name').text('Helena 57 West');
+    $('#building-address').text('(601 W 57th St)');
     $('#building-text').text('Helena 57 West was built in 2005 by The Durst Organization. The entire block that the building sits on is owned by The Durst Organization. There are a total of 597-units in the building.');
     var streetviewIframeCode = `<iframe src="https://www.google.com/maps/embed?pb=!4v1616721384722!6m8!1m7!1s1f26u8DIAwLVg5ti1WQKiQ!2m2!1d40.77048970983957!2d-73.99179948642852!3f35.46209677011075!4f44.6213411037572!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
     $('#building-pic').empty()
     $('#building-pic').html(streetviewIframeCode)
     map.flyTo({
       center: [-73.99178283385433, 40.771012509194534],
-      "zoom": 15.5
+      "zoom": 18
     });
   });
 });

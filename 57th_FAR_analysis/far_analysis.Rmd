@@ -63,13 +63,11 @@ skyscraper_points <- read_sf("~/Desktop/Github/57th_FAR/raw_data/landmark_points
 skyscraperbbl <- c( 1013307502, #252e57th
                     1011057501, # VIA57West
                     1010090029, #Senville Buildings
-                    1013100001, #432 Park Ave
+                    1012927502, #432 Park Ave
                     1011057501, #big tetrahedron building 
                     1010307501, #220 Central Park South
                     1010100025, #111 West 57th
-                    1012720001, #Hemesphere House
                     1010107506, #One57
-                    1010290027, #Osborne Apartment House
                     1011050029 #Helena 57 West **this might be wrong
                     )
 
