@@ -1,8 +1,8 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiYXNwOTA4OSIsImEiOiJja2xrMHk3ZW01Mmk2MnZucmFrM3podmh3In0.qZ1N12EiB17J56BQ5Oy5QQ'
 
 // opening modal on page load
-$(document).ready(function(){
-    $("#exampleModal").modal('show');
+$(document).ready(function() {
+  $("#exampleModal").modal('show');
 });
 // connecting to the datasource for the map and setting load view
 var map = new mapboxgl.Map({
@@ -188,8 +188,7 @@ map.on('load', function() {
   }
 });
 
-/// FAR and Floor Button Connection
-
+/// Number Floor Button Connection
 $('.btn-check#btnradioNumFloors').on('click', function() {
   var layerVisibility = map.getLayoutProperty('57th_street_floors_fill', 'visibility')
   //  if (layerVisibility === 'visible') {
@@ -201,7 +200,7 @@ $('.btn-check#btnradioNumFloors').on('click', function() {
 })
 
 
-// turn off layer
+// turn off layer button connection
 $('.btn-check#btnradioOFF').on('click', function() {
   var layerVisibility = map.getLayoutProperty('57th_street_off', 'visibility')
   //if (layerVisibility === 'visible') {
@@ -211,21 +210,23 @@ $('.btn-check#btnradioOFF').on('click', function() {
   //  map.setLayoutProperty('visibility', 'visible')
   // }
 })
-
+//seting up automatic street view
 map.on('load', function() {
   var streetviewIframeCode = `<iframe src="https://www.google.com/maps/embed?pb=!4v1616793991754!6m8!1m7!1sCAoSLEFGMVFpcFAydjlrNEVzZXROaDhodnZmV0xlMU54RjR3REJtU1V1bWZiMmU4!2m2!1d40.76684274273518!2d-73.9766364282417!3f243.55614702429799!4f23.352566159782498!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
   $('#building-pic').empty()
   $('#building-pic').html(streetviewIframeCode)
 })
 
+
+//setting up all of the skyscraper buttons.
 $('.btn-check').on('click', function() {
-  $('#btnradio1').click(function() {
-    // $("#p1").onClick();
+  $('#btnradio1').click(function(){
     $('#building-name').text('252 e 57th');
-    $('#building-address').text('()');
+    $('#building-address').text('(252 E 57th St)');
     $('#building-text').text('252 East 57th Street is a mixed use modernist style residential skyscraper in Midtown Manhattan, New York City, developed by the World Wide Group and Rose Associates, Inc. The building has a total of 436,000 sq ft of floor area.');
     var streetviewIframeCode = `<iframe src="https://www.google.com/maps/embed?pb=!4v1616720061015!6m8!1m7!1solmMBqWODVs5BynUGrY9Og!2m2!1d40.7590908835685!2d-73.96550381647552!3f310.46249877336686!4f52.671057075068006!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
     $('#building-pic').html(streetviewIframeCode)
+    $('#building-pic').empty()
     map.flyTo({
       center: [-73.96588647877252, 40.75915415324138],
       "zoom": 15.5
