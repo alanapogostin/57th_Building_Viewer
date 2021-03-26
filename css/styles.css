@@ -101,13 +101,6 @@ body {
   height: 10px;
   margin-left: 5px;
 }
-.legend-key-2 {
-  right:0;
-  display: inline-block;
-  border-radius: 20%;
-  width: 10px;
-  height: 10px;
-}
 .hidden
 {
    display: none

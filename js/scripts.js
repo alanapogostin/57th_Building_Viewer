@@ -87,34 +87,6 @@ map.on('load', function() {
       'line-width': 0.8
     },
     });
-  //Adding in FAR layer
-  /// Adding Number of Floors Fill
-  map.addLayer({
-    'id': '57th_street_FAR_fill',
-    'type': 'fill',
-    'source': '57th_lots',
-    'layout': {},
-    'paint': {
-      'fill-color': [
-        'interpolate',
-        ['linear'],
-        ['get', 'BuiltFAR'],
-        5,
-        '#edf8fb',
-        10,
-        '#b3cde3',
-        15,
-        '#8c96c6',
-        20,
-        '#8856a7',
-        25,
-        '#810f7c'
-      ],
-      'fill-outline-color': '#ccc',
-      'fill-opacity': 0.8
-    },
-    });
-
   /// Adding Number of Floors Fill
 
   map.addLayer({
@@ -163,7 +135,7 @@ var popup = new mapboxgl.Popup({
 map.on('mousemove', function(e) {
 
   var features = map.queryRenderedFeatures(e.point, {
-    layers: ['57th_street_floors_fill', '57th_street_FAR_fill'],
+    layers: ['57th_street_floors_fill'],
   });
 
   if (features.length > 0) {
@@ -215,27 +187,12 @@ map.on('load', function() {
 
 /// FAR and Floor Button Connection
 
-$('.btn-check').on('click',function () {
   $('.btn-check#btnradioNumFloors').on('click', function() {
-    var layerVisibility = map.getLayoutProperty('57th_street_FAR_fill', 'visibility')
-  //  if (layerVisibility === 'visible') {
-      map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'visible')
-    //  map.setLayoutProperty('visibility', 'visible')
-      map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'visible')
-    //  map.setLayoutProperty('visibility', 'none')
-      map.setLayoutProperty('57th_street_off', 'visibility', 'visible')
-    //  map.setLayoutProperty('visibility', 'visible')
-  //  }
-  })
-
-  $('.btn-check#btnradioFAR').on('click', function() {
     var layerVisibility = map.getLayoutProperty('57th_street_floors_fill', 'visibility')
   //  if (layerVisibility === 'visible') {
-      map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'none')
+      map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'visible')
       //map.setLayoutProperty('visibility', 'visible')
-      map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'visible')
-      //map.setLayoutProperty('visibility', 'none')
-      map.setLayoutProperty('57th_street_off', 'visibility', 'visible')
+      map.setLayoutProperty('57th_street_off', 'visibility', 'none')
       //map.setLayoutProperty('visibility', 'visible')
   //   }
   })
@@ -249,11 +206,9 @@ $('.btn-check#btnradioOFF').on('click', function() {
     //map.setLayoutProperty('visibility', 'visible')
     map.setLayoutProperty('57th_street_floors_fill', 'visibility', 'none')
   //  map.setLayoutProperty('visibility', 'visible')
-    map.setLayoutProperty('57th_street_FAR_fill', 'visibility', 'none')
-  //  map.setLayoutProperty('visibility', 'visible')
-  // } 
+  // }
 })
-})
+
 
 
 $('.btn-check').on('click',function () {
@@ -262,7 +217,6 @@ $('.btn-check').on('click',function () {
          $('#building-name').text('252 e 57th');
          $('#building-text').text('252 East 57th Street is a mixed use modernist style residential skyscraper in Midtown Manhattan, New York City, developed by the World Wide Group and Rose Associates, Inc. The building has a total of 436,000 sq ft of floor area.');
          var streetviewIframeCode = `<iframe src="https://www.google.com/maps/embed?pb=!4v1616720061015!6m8!1m7!1solmMBqWODVs5BynUGrY9Og!2m2!1d40.7590908835685!2d-73.96550381647552!3f310.46249877336686!4f52.671057075068006!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
-         //$('#building-pic').empty()
          $('#building-pic').html(streetviewIframeCode)
          map.flyTo({
             center: [-73.99164928273365, 40.77096097471898],
