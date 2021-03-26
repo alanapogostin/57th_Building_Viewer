@@ -190,6 +190,7 @@ map.on('mousemove', function(e) {
     popup.remove();
     map.getCanvas().style.cursor = '';;
   }
+
 })
 
 //Adding in Floor legend
@@ -283,6 +284,9 @@ $('.btn-check').on('click',function () {
          var streetviewIframeCode = `<iframe src="https://www.google.com/maps/embed?pb=!4v1616720061015!6m8!1m7!1solmMBqWODVs5BynUGrY9Og!2m2!1d40.7590908835685!2d-73.96550381647552!3f310.46249877336686!4f52.671057075068006!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
          $('#building-pic').empty()
          $('#building-pic').html(streetviewIframeCode)
+         map.flyTo({
+            center: [-73.99164928273365, 40.77096097471898]
+    });
     });
 
     $("#btnradio2").click(function(){
@@ -291,6 +295,9 @@ $('.btn-check').on('click',function () {
         var streetviewIframeCode = `<iframe src="https://www.google.com/maps/embed?pb=!4v1616721059731!6m8!1m7!1sORWOgJwHApEX-6sCZTFGPg!2m2!1d40.77211443117792!2d-73.99363484185407!3f141.41587227542627!4f20.138134998705723!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
         $('#building-pic').empty()
         $('#building-pic').html(streetviewIframeCode)
+        map.flyTo({
+           center: [ -73.99323831851291, 40.771821105468526]
+   });
     });
 
     $("#btnradio4").click(function(){
@@ -299,6 +306,9 @@ $('.btn-check').on('click',function () {
          var streetviewIframeCode = `<iframe src="https://www.google.com/maps/embed?pb=!4v1616721151608!6m8!1m7!1s_S5cyMMXWtL7crrp33eVCw!2m2!1d40.76127213063792!2d-73.97205055455967!3f15.286090492905696!4f56.08728513782489!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
          $('#building-pic').empty()
          $('#building-pic').html(streetviewIframeCode)
+         map.flyTo({
+            center: [ -73.97176020174729, 40.761737408528056]
+    });
     });
     $("#btnradio5").click(function(){
          $('#building-name').text('220 Central Park South');
@@ -306,6 +316,9 @@ $('.btn-check').on('click',function () {
          var streetviewIframeCode = `<iframe src="https://www.google.com/maps/embed?pb=!4v1616721206853!6m8!1m7!1snGRtsyeRjKZ_sdTk7xgopg!2m2!1d40.76733361619728!2d-73.98007103036878!3f202.25514752355!4f47.29894444977293!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
          $('#building-pic').empty()
          $('#building-pic').html(streetviewIframeCode)
+         map.flyTo({
+            center: [-73.98115133200699, 40.76772659198911]
+    });
     });
     $("#btnradio6").click(function(){
          $('#building-name').text('Steinway Tower');
@@ -313,6 +326,9 @@ $('.btn-check').on('click',function () {
          var streetviewIframeCode = `<iframe src="https://www.google.com/maps/embed?pb=!4v1616721252327!6m8!1m7!1sCAoSLEFGMVFpcFBRN3ZEcFhLb3Vpb0JfYXAwTXhtS1lrMzhMWjlPUF9zSmxUc01n!2m2!1d40.7648392!2d-73.9779892!3f82.75415537404595!4f38.17179484624219!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
          $('#building-pic').empty()
          $('#building-pic').html(streetviewIframeCode)
+         map.flyTo({
+            center: [-73.9779032338546, 40.76493171695457]
+    });
     });
     $("#btnradio8").click(function(){
          $('#building-name').text('One57');
@@ -320,6 +336,10 @@ $('.btn-check').on('click',function () {
          var streetviewIframeCode = `<iframe src="https://www.google.com/maps/embed?pb=!4v1616721316225!6m8!1m7!1snSNoBmvstsfBbpHLXF8MuA!2m2!1d40.76524640269782!2d-73.97940967071713!3f49.62740778983144!4f59.42949705978526!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
          $('#building-pic').empty()
          $('#building-pic').html(streetviewIframeCode)
+         map.flyTo({
+            center: [-73.979125145501, 40.76557477497466]
+    });
+
     });
     $("#btnradio9").click(function(){
          $('#building-name').text('Helena 57 West');
@@ -327,26 +347,8 @@ $('.btn-check').on('click',function () {
          var streetviewIframeCode = `<iframe src="https://www.google.com/maps/embed?pb=!4v1616721384722!6m8!1m7!1s1f26u8DIAwLVg5ti1WQKiQ!2m2!1d40.77048970983957!2d-73.99179948642852!3f35.46209677011075!4f44.6213411037572!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
          $('#building-pic').empty()
          $('#building-pic').html(streetviewIframeCode)
+         map.flyTo({
+            center: [-73.99178283385433, 40.771012509194534]
+    });
     });
 });
-
-
-//Highlight when hover
-map.addSource('highlight-feature', {
-   type: 'geojson',
-   data: {
-     type: 'FeatureCollection',
-     features: []
-   }
- })
-
- map.addLayer({
-   id: 'highlight-line',
-   type: 'line',
-   source: 'highlight-feature',
-   paint: {
-     'line-width': 2,
-     'line-opacity': 1,
-     'line-color': 'black',
-   }
- });
