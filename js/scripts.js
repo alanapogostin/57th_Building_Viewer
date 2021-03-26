@@ -268,13 +268,18 @@ $('.btn-check#btnradioOFF').on('click', function() {
 })
 })
 // // //Building Info
-// $('.btn-check').on('click', function() {
-// 	var buildingPicUrl = $(this).attr('building-pic')
-//   console.log(buildingPicUrl)
-//   $('#building-pic').empty()
-//   $('#building-pic').css('background-image', `url(${buildingPicUrl})`)
-//
-// })
+// $('.btn-check').on('load',function () {
+//     $('#btnradio1').click(function(){
+//         // $("#p1").onClick();
+//          $('#building-name').text('252 e 57th');
+//          $('#building-text').text('252 East 57th Street is a mixed use modernist style residential skyscraper in Midtown Manhattan, New York City, developed by the World Wide Group and Rose Associates, Inc. The building has a total of 436,000 sq ft of floor area.');
+//          var streetviewIframeCode = `<iframe src="https://www.google.com/maps/embed?pb=!4v1616720061015!6m8!1m7!1solmMBqWODVs5BynUGrY9Og!2m2!1d40.7590908835685!2d-73.96550381647552!3f310.46249877336686!4f52.671057075068006!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
+//          $('#building-pic').empty()
+//          $('#building-pic').html(streetviewIframeCode)
+//          map.flyTo({
+//             center: [-73.99164928273365, 40.77096097471898]
+//     });
+//   });
 
 $('.btn-check').on('click',function () {
     $('#btnradio1').click(function(){
@@ -282,7 +287,7 @@ $('.btn-check').on('click',function () {
          $('#building-name').text('252 e 57th');
          $('#building-text').text('252 East 57th Street is a mixed use modernist style residential skyscraper in Midtown Manhattan, New York City, developed by the World Wide Group and Rose Associates, Inc. The building has a total of 436,000 sq ft of floor area.');
          var streetviewIframeCode = `<iframe src="https://www.google.com/maps/embed?pb=!4v1616720061015!6m8!1m7!1solmMBqWODVs5BynUGrY9Og!2m2!1d40.7590908835685!2d-73.96550381647552!3f310.46249877336686!4f52.671057075068006!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
-         $('#building-pic').empty()
+         //$('#building-pic').empty()
          $('#building-pic').html(streetviewIframeCode)
          map.flyTo({
             center: [-73.99164928273365, 40.77096097471898]
