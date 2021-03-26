@@ -19,16 +19,16 @@ html, body, #container, #sidebar-left, #mapContainer, #sidebar-right {
   outline-color: black;
   background-color: light grey;
   right: 0;
-  width: 20%;
   height: 100%;
   box-sizing: border-box;
 }
 #sidebar-right{
   right: 0;
+  width: 25%;
 }
 
 #sidebar-left {
-
+width: 20%;
 }
 
 #card-source{
@@ -65,6 +65,7 @@ body {
 
 #building-text{
   font-family: Arial, sans-serif;
+  bottom: 0;
   font-size: 12;
   font-color: grey;
   display: flex;
@@ -72,17 +73,11 @@ body {
 }
 
 #building-pic{
-  height: 200px;
+  height: 100px;
   width: 100%;
-}
-building-pic{
-  width: 200px;
-  height: 300px;
-  object-fit: contain;
 }
 #features {
   top: 0;
-  height: flex;
   margin-top: 20px;
   width: flex;
 }
