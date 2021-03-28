@@ -9,7 +9,7 @@ var map = new mapboxgl.Map({
   container: 'mapContainer', // container ID
   style: 'mapbox://styles/mapbox/light-v10', // style URL
   center: [-73.97992, 40.76721], // starting position [lng, lat]
-  zoom: 14.5, // starting zoom
+  zoom: 12.5, // starting zoom
   pitch: 40, // pitch in degrees
   bearing: -61,
 });
@@ -225,8 +225,8 @@ $('.btn-check').on('click', function() {
     $('#building-address').text('(252 E 57th St)');
     $('#building-text').text('252 East 57th Street is a mixed use modernist style residential skyscraper in Midtown Manhattan, New York City, developed by the World Wide Group and Rose Associates, Inc. The building has a total of 436,000 sq ft of floor area.');
     var streetviewIframeCode = `<iframe src="https://www.google.com/maps/embed?pb=!4v1616720061015!6m8!1m7!1solmMBqWODVs5BynUGrY9Og!2m2!1d40.7590908835685!2d-73.96550381647552!3f310.46249877336686!4f52.671057075068006!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
-    $('#building-pic').html(streetviewIframeCode)
     $('#building-pic').empty()
+    $('#building-pic').html(streetviewIframeCode)
     map.flyTo({
       center: [-73.96588647877252, 40.75915415324138],
       "zoom": 15.5
